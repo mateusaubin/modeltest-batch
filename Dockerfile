@@ -1,5 +1,5 @@
 
-FROM python:3.6
+FROM python:3.6-alpine
 
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
@@ -10,8 +10,9 @@ RUN pip install -r /requirements.txt
 
 WORKDIR /app
 
-COPY lib/phyml lib/phyml
-COPY lib/small.aP6.phy tmp/small.aP6.phy
+COPY lib/phyml-alpine lib/phyml
+COPY lib/small.aP6.phy tmp/small.phy
+COPY lib/big.channa.phy /tmp/big.phy
 
 COPY logme.py logme.py
 
