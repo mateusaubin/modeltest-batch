@@ -38,7 +38,7 @@ logger.info("Retry={}".format(retry))
 
 
 cmdline_args = [os.path.join(cwd, 'lib', 'phyml'), ]
-cmdline_args.extend(['-i', 'tmp/big.phy'])
+cmdline_args.extend(['-i', 'tmp/{}.phy'.format(phyfilepath)])
 cmdline_args.extend("-d nt -n 1 -b 0 --run_id GTR+I+G -m 012345 -f m -v e -c 4 -a e --no_memory_check --r_seed 12345 -o tlr -s BEST".split())
 
 trace_file = os.path.join(
