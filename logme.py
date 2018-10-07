@@ -13,33 +13,21 @@ logging.basicConfig(
 )
 logger = logging.getLogger()
 
-phyfilepath = sys.argv[1]
+# Aqui comeca a baixaria
 
-time.sleep(2)
-logger.debug('buga {} buga'.format(phyfilepath))
-
-time.sleep(2)
-logger.info('tamo no docker?')
-
-time.sleep(2)
-logger.warning('avizao')
-
-time.sleep(2)
-logger.error('errado {} errado'.format(phyfilepath))
-
-time.sleep(2)
-logger.critical('ja era')
+filepath = sys.argv[1]
+commandlineargs = sys.argv[2]
 
 cwd = os.getcwd()
-logger.critical(cwd)
+logger.critical("CWD={}".format(cwd))
 
 retry = os.getenv("AWS_BATCH_JOB_ATTEMPT", -1)
 logger.info("Retry={}".format(retry))
 
 
 cmdline_args = [os.path.join(cwd, 'lib', 'phyml'), ]
-cmdline_args.extend(['-i', 'tmp/{}.phy'.format(phyfilepath)])
-cmdline_args.extend("-d nt -n 1 -b 0 --run_id GTR+I+G -m 012345 -f m -v e -c 4 -a e --no_memory_check --r_seed 12345 -o tlr -s BEST".split())
+cmdline_args.extend(['-i', 'tmp/{}.phy'.format(filepath)])
+cmdline_args.extend(commandlineargs.split())
 
 trace_file = os.path.join(
             cwd,
