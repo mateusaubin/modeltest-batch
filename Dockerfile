@@ -20,4 +20,4 @@ COPY logme.py logme.py
 
 #CMD [ "python", "-u", "vai.py" ] unbuffered
 ENTRYPOINT [ "python3", "logme.py" ]
-CMD [ "Ref::phyfilepath" ]
+CMD [ "Ref::path". "Ref:cmd" ]
